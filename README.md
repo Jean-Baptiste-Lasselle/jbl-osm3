@@ -24,6 +24,17 @@ gpg: no valid OpenPGP data found.
 Et voilà pourquoi, dans le dockerfile, l'instruction échoue : il y a un problème avec la signature GPG du repo
 Solution : J'ai trouvé que la clé GPG avait été déplacée à un nouvel URI 
 
+Aller, ça y est, ça marche avec les instructions suivvantes: 
+
+```bash
+docker-compose down --rmi all
+docker system prune -f
+docker-compose up -d --build
+./scripts/initialize-server.sh
+# 
+```
+Et quand le script d'initisalisation `./scripts/initialize-server.sh` s'est terminé, allez à la page http:/ADRESSE_IP_SERVEUR:3000/ avec Firefox.
+
 
 # Building a tile server based on Ubuntu 16.04
 
